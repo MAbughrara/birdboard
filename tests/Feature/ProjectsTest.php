@@ -54,14 +54,14 @@ class ProjectsTest extends TestCase
     }
     /** @test */
 
-    public function a_project_requires_a_owner()
+    public function only_authenticated_users_can_create_projects()
     {
 //        $this->withoutExceptionHandling();
 
 
         $attributes=factory('App\Project')->raw();
 
-        $this->post('/projects',$attributes)->assertRedirect('/login');
+        $this->post('/projects',$attributes)->assertRedirect('login');
     }
 
 
